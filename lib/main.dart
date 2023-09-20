@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:memento/home/banner.dart';
-import 'package:memento/home/category_bar.dart';
-import 'package:memento/home/search.dart';
-import 'package:memento/home/top_bar.dart';
+import 'package:memento/lobby/main.dart';
+import 'package:memento/web/home/main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,35 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Memento - 너도 나도 서로 멘토',
+      title: 'Memento - 다양한 배움의 장터',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LobbyPage(),
+        '/web': (context) => const HomePage(),
+      },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent),
         useMaterial3: true,
-      ),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Flexible(child: TopBar()),
-          Flexible(child: MainBanner()),
-          Flexible(child: CategoryBar()),
-          Flexible(child: Search()),
-        ],
       ),
     );
   }
